@@ -263,13 +263,6 @@
                         <td class="p-6 text-center text-gray-400">$109</td>
                         <td class="p-6 text-center text-gray-400">$99</td>
                         <td class="p-6 text-center text-gray-400">$109</td>
-                        <td class="p-6 text-right text-white font-bold">$219</td>
-                    </tr>
-                    <tr class="hover:bg-white/5 transition-colors group">
-                        <td class="sticky left-0 z-10 bg-[#0a0a0a]/95 backdrop-blur-md p-3 font-medium text-white border-r border-white/5">
-                            <span class="text-gray-600 mr-4 group-hover:text-yellow-400">02</span>Phnom Penh — Siem Reap</td>
-                        <td class="p-6 text-center text-gray-400">$79</td>
-                        <td class="p-6 text-center text-gray-400">$109</td>
                         <td class="p-6 text-center text-gray-400">$109</td>
                         <td class="p-6 text-center text-gray-400">$139</td>
                         <td class="p-6 text-right text-white font-bold">$349</td>
@@ -412,7 +405,12 @@
             </a>
         </div>
             
-        <p class="mt-10 text-gray-700">&copy; 2026 Archive Series</p>
+        <p class="mt-10 text-gray-700">&copy; <span id="year"></span>  Archive Series</p>
+        <script>
+            document.getElementById("year").textContent = new Date().getFullYear();
+        </script>
+
+       
     </footer>
 
 </body>

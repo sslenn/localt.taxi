@@ -1,417 +1,595 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
-<!-- <head> -->
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>The Fleet | LocalTaxi Documentary</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Playfair+Display:ital,wght@0,900;1,900&display=swap');
-        
         .font-doc-title { font-family: 'Playfair Display', serif; }
-        .font-doc-sans { font-family: 'Inter', sans-serif; }
+        .font-doc-sans  { font-family: 'Inter', sans-serif; }
     </style>
 </head>
 
 <body class="font-doc-sans bg-black text-white selection:bg-yellow-400 selection:text-black">
 
-   <header class="fixed top-0 w-full z-50 px-6 md:px-12 py-6 flex justify-between items-center bg-gradient-to-b from-black/90 via-black/40 to-transparent backdrop-blur-sm">
-    
+  <!-- ═══════════════════════════════════════════════════════════════ HEADER -->
+  <header class="fixed top-0 w-full z-50 px-6 md:px-12 py-6 flex justify-between items-center bg-gradient-to-b from-black/90 via-black/40 to-transparent backdrop-blur-sm">
     <div class="flex items-center gap-4">
-            <div class="w-20 h-10 flex items-center justify-center shrink-0">
-                <img src="logo.png" alt="LocalTaxi Logo" class="max-w-full max-h-full object-contain" />
-            </div>
-        </div>
-
-        <nav class="hidden md:flex gap-10 text-xs font-bold uppercase tracking-widest text-gray-400">
-            <a href="#hero" class="hover:text-yellow-400 transition-colors">Archive</a>
-            <a href="#featured-cars" class="hover:text-yellow-400 transition-colors">The Fleet</a>
-            <a href="#destinations" class="hover:text-yellow-400 transition-colors">Destinations</a>
-            <a href="#contact" class="hover:text-yellow-400 transition-colors">Contact</a>
-        </nav>
-
-        <button id="menu-btn" class="md:hidden text-white focus:outline-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-            </svg>
-        </button>
-
-        <div id="mobile-menu" class="absolute top-full left-0 w-full bg-black/95 backdrop-blur-xl border-t border-white/10 hidden flex-col p-8 gap-6 text-center text-sm font-bold uppercase tracking-[0.2em] text-gray-400 md:hidden">
-            <a href="#hero" class="hover:text-yellow-400 py-2">Archive</a>
-            <a href="#featured-cars" class="hover:text-yellow-400 py-2">The Fleet</a>
-            <a href="#destinations" class="hover:text-yellow-400 py-2">Destinations</a>
-            <a href="#contact" class="hover:text-yellow-400 py-2">Contact</a>
-        </div>
-    </header>
-
-    <script>
-        const btn = document.getElementById('menu-btn');
-        const menu = document.getElementById('mobile-menu');
-
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-            menu.classList.toggle('flex');
-        });
-
-        // Close menu when a link is clicked
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                menu.classList.add('hidden');
-                menu.classList.remove('flex');
-            });
-        });
-    </script>
-
-    <section id="hero" class="relative h-screen flex items-center justify-center overflow-hidden">
-        <div class="absolute inset-0 z-0">
-            <img src="taxi-bg.jpg" alt="LocalTaxi" class="w-full h-full object-cover opacity-50 scale-105 animate-pulse-slow">
-            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
-        </div>
-
-        <div class="relative z-10 text-center space-y-4 px-6">
-            <span class="text-yellow-400 font-bold uppercase tracking-[0.4em] text-xs"> Your Journey Begin Here</span>
-            <h2 class="text-6xl md:text-9xl font-doc-title italic leading-none">Welcome to <span class="text-yellow-400">LocalTaxi</span></h2>
-            <p class="text-gray-400 max-w-xl mx-auto text-sm md:text-base leading-relaxed font-light">
-                Exploring the streets of Phnom Penh and Siem Reap through the lens of comfort, reliability, and precision engineering.
-            </p>
-            <div class="pt-10">
-                <a href="#featured-cars" class="group flex flex-col items-center gap-4">
-                    <span class="text-[10px] uppercase tracking-[0.3em] text-gray-500 group-hover:text-white transition-colors">Scroll to View Fleet</span>
-                    <div class="w-[1px] h-16 bg-gradient-to-b from-yellow-400 to-transparent"></div>
-                </a>
-            </div>
-        </div>
-    </section>
-
-<section id="featured-cars" class="py-32 px-6 bg-black overflow-hidden">
-    <div class="max-w-7xl mx-auto">
-        <div class="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
-            <div>
-                <span class="text-yellow-400 font-bold uppercase tracking-[0.3em] text-xs">The Archive</span>
-                <h2 class="text-5xl font-doc-title text-white mt-2">The Fleet</h2>
-            </div>
-            <p class="text-gray-500 max-w-sm border-l border-yellow-400 pl-6">
-                A curated selection of vehicles designed for the diverse terrains of the Kingdom.
-            </p>
-        </div>
-
-        <div class="grid md:grid-cols-12 gap-12 items-center">
-            <div class="md:col-span-7 overflow-hidden rounded-2xl bg-gradient-to-br from-gray-900 to-black border border-white/5 relative h-[400px] md:h-[500px]">
-                <div id="carousel-track" class="flex transition-transform duration-1000 cubic-bezier(0.4, 0, 0.2, 1) h-full">
-                    <div class="min-w-full h-full flex items-center justify-center p-8 slide-item active-slide">
-                        <img src="carModel/alphard2020.png" class="car-img max-w-full max-h-full object-contain">
-                    </div>
-                    <div class="min-w-full h-full flex items-center justify-center p-8 slide-item">
-                        <img src="carModel/alphard2012.png" class="car-img max-w-full max-h-full object-contain">
-                    </div>
-                    <div class="min-w-full h-full flex items-center justify-center p-8 slide-item">
-                        <img src="carModel/alphard.png" class="car-img max-w-full max-h-full object-contain">
-                    </div>
-                    <div class="min-w-full h-full flex items-center justify-center p-8 slide-item">
-                        <img src="carModel/starex.png" class="car-img max-w-full max-h-full object-contain">
-                    </div>
-                    <div class="min-w-full h-full flex items-center justify-center p-8 slide-item">
-                        <img src="carModel/suv.png" class="car-img max-w-full max-h-full object-contain">
-                    </div>
-                </div>
-            </div>
-
-            <div class="md:col-span-5 space-y-6">
-                <div id="text-content" class="transition-all duration-500">
-                    <span id="car-number" class="text-yellow-400 font-bold text-sm tracking-tighter uppercase">01 // The Executive</span>
-                    <h3 id="car-title" class="text-4xl font-bold italic font-doc-title text-white mt-2">Luxury Alphard</h3>
-                    
-                    <div class="mt-4 mb-6 inline-block bg-yellow-400/10 border border-yellow-400/30 px-4 py-1 rounded-sm">
-                        <span class="text-xs text-yellow-400 uppercase tracking-widest mr-2">Est. Range:</span>
-                        <span id="car-price" class="text-white font-bold">$120 - $150</span>
-                    </div>
-
-                    <p id="car-desc" class="text-gray-400 leading-relaxed font-light h-24">Our flagship for high-end travel. Optimized for ultimate comfort and privacy.</p>
-                    
-                    <div class="grid grid-cols-3 gap-4 pt-6 border-t border-white/5">
-                        <div>
-                            <p class="text-[10px] text-gray-500 uppercase tracking-widest">Capacity</p>
-                            <p id="spec-seats" class="text-white font-medium">7 Seats</p>
-                        </div>
-                        <div>
-                            <p class="text-[10px] text-gray-500 uppercase tracking-widest">Type</p>
-                            <p id="spec-type" class="text-white font-medium">Premium</p>
-                        </div>
-                        <div>
-                            <p class="text-[10px] text-gray-500 uppercase tracking-widest">Luggage</p>
-                            <p id="spec-luggage" class="text-white font-medium">4 Bags</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="w-full h-px bg-white/10 relative mt-8">
-                    <div id="progress-bar" class="absolute top-0 left-0 h-full bg-yellow-400 transition-none w-0"></div>
-                </div>
-
-                <div class="flex items-center gap-6 pt-4">
-                    <div class="flex gap-2">
-                        <button onclick="manualMove(-1)" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-yellow-400 hover:text-black transition-all">←</button>
-                        <button onclick="manualMove(1)" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-yellow-400 hover:text-black transition-all">→</button>
-                    </div>
-                    <span class="text-white/30 font-mono text-sm">
-                        <span id="current-num" class="text-yellow-400">01</span> / 05
-                    </span>
-                </div>
-            </div>
-        </div>
+      <div class="w-20 h-10 flex items-center justify-center shrink-0">
+        <img src="./logo/logo.png" alt="LocalTaxi Logo" class="max-w-full max-h-full object-contain" />
+      </div>
     </div>
-</section>
 
-<style>
+    <nav class="hidden md:flex gap-10 text-xs font-bold uppercase tracking-widest text-gray-400">
+      <a href="#hero"            class="hover:text-yellow-400 transition-colors">Archive</a>
+      <a href="#featured-cars"   class="hover:text-yellow-400 transition-colors">The Fleet</a>
+      <a href="#destinations"    class="hover:text-yellow-400 transition-colors">Destinations</a>
+      <a href="#siem-reap-tours" class="hover:text-yellow-400 transition-colors">Tour Packages</a>
+      <a href="#contact"         class="hover:text-yellow-400 transition-colors">Contact</a>
+    </nav>
+
+    <button id="menu-btn" class="md:hidden text-white focus:outline-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+      </svg>
+    </button>
+
+    <div id="mobile-menu" class="absolute top-full left-0 w-full bg-black/95 backdrop-blur-xl border-t border-white/10 hidden flex-col p-8 gap-6 text-center text-sm font-bold uppercase tracking-[0.2em] text-gray-400 md:hidden">
+      <a href="#hero"            class="hover:text-yellow-400 py-2">Archive</a>
+      <a href="#featured-cars"   class="hover:text-yellow-400 py-2">The Fleet</a>
+      <a href="#destinations"    class="hover:text-yellow-400 py-2">Destinations</a>
+      <a href="#siem-reap-tours" class="hover:text-yellow-400 py-2">Tour Packages</a>
+      <a href="#contact"         class="hover:text-yellow-400 py-2">Contact</a>
+    </div>
+  </header>
+
+  <script>
+    const btn  = document.getElementById('menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+      menu.classList.toggle('flex');
+    });
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        menu.classList.add('hidden');
+        menu.classList.remove('flex');
+      });
+    });
+  </script>
+
+  <!-- ════════════════════════════════════════════════════════════════ HERO -->
+  <section id="hero" class="relative h-screen flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img src="taxi-bg.jpg" alt="LocalTaxi" class="w-full h-full object-cover opacity-50 scale-105">
+      <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+    </div>
+    <div class="relative z-10 text-center space-y-4 px-6">
+      <span class="text-yellow-400 font-bold uppercase tracking-[0.4em] text-xs">Your Journey Begins Here</span>
+      <h2 class="text-6xl md:text-9xl font-doc-title italic leading-none">Welcome to <span class="text-yellow-400">LocalTaxi</span></h2>
+      <p class="text-gray-400 max-w-xl mx-auto text-sm md:text-base leading-relaxed font-light">
+        Exploring the streets of Phnom Penh and Siem Reap through the lens of comfort, reliability, and precision engineering.
+      </p>
+      <div class="pt-10">
+        <a href="#featured-cars" class="group flex flex-col items-center gap-4">
+          <span class="text-[10px] uppercase tracking-[0.3em] text-gray-500 group-hover:text-white transition-colors">Scroll to View Fleet</span>
+          <div class="w-[1px] h-16 bg-gradient-to-b from-yellow-400 to-transparent"></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════ THE FLEET -->
+  <section id="featured-cars" class="py-32 px-6 bg-black overflow-hidden">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div>
+          <span class="text-yellow-400 font-bold uppercase tracking-[0.3em] text-xs">The Archive</span>
+          <h2 class="text-5xl font-doc-title text-white mt-2">The Fleet</h2>
+        </div>
+        <p class="text-gray-500 max-w-sm border-l border-yellow-400 pl-6">
+          A curated selection of vehicles designed for the diverse terrains of the Kingdom.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-12 gap-12 items-center">
+        <div class="md:col-span-7 overflow-hidden rounded-2xl bg-gradient-to-br from-gray-900 to-black border border-white/5 relative h-[400px] md:h-[500px]">
+          <div id="carousel-track" class="flex transition-transform duration-1000 h-full">
+            <div class="min-w-full h-full flex items-center justify-center p-8 slide-item">
+              <img src="carModel/alphard2020.png" class="car-img max-w-full max-h-full object-contain">
+            </div>
+            <div class="min-w-full h-full flex items-center justify-center p-8 slide-item">
+              <img src="carModel/alphard2012.png" class="car-img max-w-full max-h-full object-contain">
+            </div>
+            <div class="min-w-full h-full flex items-center justify-center p-8 slide-item">
+              <img src="carModel/alphard.png" class="car-img max-w-full max-h-full object-contain">
+            </div>
+            <div class="min-w-full h-full flex items-center justify-center p-8 slide-item">
+              <img src="carModel/starex.png" class="car-img max-w-full max-h-full object-contain">
+            </div>
+          </div>
+        </div>
+
+        <div class="md:col-span-5 space-y-6">
+          <div id="text-content" class="transition-all duration-500">
+            <span id="car-number" class="text-yellow-400 font-bold text-sm tracking-tighter uppercase">01 // The Executive</span>
+            <h3 id="car-title" class="text-4xl font-bold italic font-doc-title text-white mt-2">Luxury Alphard</h3>
+            <p id="car-desc" class="text-gray-400 leading-relaxed font-light mt-4 h-24">Our flagship for high-end travel. Optimized for ultimate comfort and privacy.</p>
+          </div>
+          <div class="w-full h-px bg-white/10 relative mt-8">
+            <div id="progress-bar" class="absolute top-0 left-0 h-full bg-yellow-400 transition-none w-0"></div>
+          </div>
+          <div class="flex items-center gap-6 pt-4">
+            <div class="flex gap-2">
+              <button onclick="manualMove(-1)" class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all">←</button>
+              <button onclick="manualMove(1)"  class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all">→</button>
+            </div>
+            <span class="text-white/30 font-mono text-sm">
+              <span id="current-num" class="text-yellow-400">01</span> / 04
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
     .car-img { transition: transform 8s ease-out; transform: scale(1); }
-    .active-slide .car-img { transform: scale(1.12); filter: drop-shadow(0 20px 50px rgba(250,204,21,0.15)); }
-    #text-content { will-change: transform, opacity; }
-</style>
+    .active-slide .car-img { transform: scale(1.15); filter: drop-shadow(0 20px 50px rgba(250,204,21,0.15)); }
+  </style>
 
-<script>
+  <script>
     const carData = [
-        { n: "01 // The Executive", t: "Luxury Alphard", d: "Our flagship for high-end travel. Optimized for ultimate comfort and privacy.", p: "$120 - $150", seats: "7 Seats", type: "Executive", luggage: "4 Bags" },
-        { n: "02 // The Navigator", t: "Premium Alphard", d: "Command the road. Built for family expeditions and long-distance comfort.", p: "$100 - $130", seats: "7 Seats", type: "Premium", luggage: "4 Bags" },
-        { n: "03 // The Voyager", t: "Alphard Classic", d: "Versatile and spacious. The ideal choice for small groups or families.", p: "$80 - $110", seats: "8 Seats", type: "Standard", luggage: "5 Bags" },
-        { n: "04 // The Navigator", t: "Hyundai Starex", d: "Built for family expeditions and long-distance comfort between provinces.", p: "$90 - $120", seats: "9 Seats", type: "Navigator", luggage: "6 Bags" },
-        { n: "05 // The Group Transporter", t: "Premium SUV", d: "The ideal choice for small groups requiring extra luggage capacity.", p: "$70 - $100", seats: "5 Seats", type: "SUV", luggage: "3 Bags" }
+      { n: "01 // The Executive", t: "Luxury Alphard",   d: "Our flagship for high-end travel. Optimized for ultimate comfort and privacy." },
+      { n: "02 // The Navigator", t: "Premium Alphard",  d: "Command the road. Built for family expeditions and long-distance comfort." },
+      { n: "03 // The Voyager",   t: "Alphard Classic",  d: "Versatile and spacious. The ideal choice for small groups or families." },
+      { n: "04 // The Navigator", t: "Hyundai Starex",   d: "Built for family expeditions and long-distance comfort between provinces." }
     ];
 
     let currentIndex = 0;
     let progressInterval;
-    const duration = 6000; // 6 seconds for slightly slower reading
+    const duration = 5000;
 
     function startProgressBar() {
-        const bar = document.getElementById('progress-bar');
-        bar.style.transition = 'none';
-        bar.style.width = '0%';
-        setTimeout(() => {
-            bar.style.transition = `width ${duration}ms linear`;
-            bar.style.width = '100%';
-        }, 50);
+      const bar = document.getElementById('progress-bar');
+      bar.style.transition = 'none';
+      bar.style.width = '0%';
+      setTimeout(() => {
+        bar.style.transition = `width ${duration}ms linear`;
+        bar.style.width = '100%';
+      }, 50);
     }
 
     function updateCarousel(index) {
-        currentIndex = (index + carData.length) % carData.length;
-        const track = document.getElementById('carousel-track');
-        const slides = document.querySelectorAll('.slide-item');
-        
-        track.style.transform = `translateX(-${currentIndex * 100}%)`;
-        
-        slides.forEach((s, i) => {
-            i === currentIndex ? s.classList.add('active-slide') : s.classList.remove('active-slide');
-        });
-
-        const content = document.getElementById('text-content');
-        content.style.opacity = 0;
-        content.style.transform = 'translateX(20px)';
-        
-        setTimeout(() => {
-            const data = carData[currentIndex];
-            document.getElementById('car-number').innerText = data.n;
-            document.getElementById('car-title').innerText = data.t;
-            document.getElementById('car-desc').innerText = data.d;
-            document.getElementById('car-price').innerText = data.p;
-            document.getElementById('spec-seats').innerText = data.seats;
-            document.getElementById('spec-type').innerText = data.type;
-            document.getElementById('spec-luggage').innerText = data.luggage;
-            document.getElementById('current-num').innerText = `0${currentIndex + 1}`;
-            
-            content.style.opacity = 1;
-            content.style.transform = 'translateX(0)';
-        }, 300);
-
-        clearInterval(progressInterval);
-        startProgressBar();
-        progressInterval = setInterval(() => updateCarousel(currentIndex + 1), duration);
+      currentIndex = (index + carData.length) % carData.length;
+      const track  = document.getElementById('carousel-track');
+      const slides = document.querySelectorAll('.slide-item');
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+      slides.forEach((s, i) => i === currentIndex ? s.classList.add('active-slide') : s.classList.remove('active-slide'));
+      const content = document.getElementById('text-content');
+      content.style.opacity   = 0;
+      content.style.transform = 'translateY(10px)';
+      setTimeout(() => {
+        document.getElementById('car-number').innerText  = carData[currentIndex].n;
+        document.getElementById('car-title').innerText   = carData[currentIndex].t;
+        document.getElementById('car-desc').innerText    = carData[currentIndex].d;
+        document.getElementById('current-num').innerText = `0${currentIndex + 1}`;
+        content.style.opacity   = 1;
+        content.style.transform = 'translateY(0)';
+      }, 300);
+      clearInterval(progressInterval);
+      startProgressBar();
+      progressInterval = setInterval(() => updateCarousel(currentIndex + 1), duration);
     }
 
-    function manualMove(dir) {
-        updateCarousel(currentIndex + dir);
-    }
-
+    function manualMove(dir) { updateCarousel(currentIndex + dir); }
     window.onload = () => updateCarousel(0);
-</script>
+  </script>
 
-   <section id="destinations" class="py-32 px-6 bg-black">
+  <!-- ══════════════════════════════════════════════════════ REGIONAL TRANSFERS -->
+  <section id="destinations" class="py-32 px-6 bg-black">
     <div class="max-w-6xl mx-auto">
-        
-        <div class="mb-16">
-            <span class="text-yellow-400 font-bold uppercase tracking-[0.3em] text-xs">Route Archive</span>
-            <h2 class="text-4xl font-doc-title text-white mt-2 italic">Regional Transfers</h2>
-            <p class="text-gray-500 mt-4 max-w-xl font-light">Cross-province expeditions with fixed-rate transparency.</p>
-        </div>
+      <div class="mb-16">
+        <span class="text-yellow-400 font-bold uppercase tracking-[0.3em] text-xs">Route Archive</span>
+        <h2 class="text-4xl font-doc-title text-white mt-2 italic">Regional Transfers</h2>
+        <p class="text-gray-500 mt-4 max-w-xl font-light">Cross-province expeditions with fixed-rate transparency.</p>
+      </div>
 
-        <div class="overflow-x-auto border border-white/10 rounded-2xl bg-white/5 backdrop-blur-md custom-scrollbar">
-            <table class="w-full text-left border-collapse min-w-[900px]">
-                <thead>
-                    <tr class="border-b border-white/10 bg-white/10">
-                        <th class="sticky left-0 z-20 bg-[#050505] p-4 text-[10px] uppercase tracking-widest text-gray-400 font-bold border-r border-white/5">Index / Journey</th>
-                        <th class="p-6 text-[10px] uppercase tracking-widest text-yellow-400 font-bold text-center">SUV</th>
-                        <th class="p-6 text-[10px] uppercase tracking-widest text-yellow-400 font-bold text-center">Starex</th>
-                        <th class="p-6 text-[10px] uppercase tracking-widest text-yellow-400 font-bold text-center">Alphard</th>
-                        <th class="p-6 text-[10px] uppercase tracking-widest text-yellow-400 font-bold text-center">Alphard 2012</th>
-                        <th class="p-6 text-[10px] uppercase tracking-widest text-yellow-400 font-bold text-right">VIP / Alphard 2020</th>
-                    </tr>
-                </thead>
-                <tbody class="divide-y divide-white/5 font-light">
-                    <tr class="hover:bg-white/5 transition-colors group">
-                        <td class="sticky left-0 z-10 bg-[#0a0a0a]/95 backdrop-blur-md p-3 font-medium text-white border-r border-white/5">
-                            <span class="text-gray-600 mr-4 group-hover:text-yellow-400">01</span>Phnom Penh — Sihanoukville
-                        </td>
-                        <td class="p-6 text-center text-gray-400">$79</td>
-                        <td class="p-6 text-center text-gray-400">$109</td>
-                        <td class="p-6 text-center text-gray-400">$99</td>
-                        <td class="p-6 text-center text-gray-400">$109</td>
-                        <td class="p-6 text-center text-gray-400">$109</td>
-                        <td class="p-6 text-center text-gray-400">$139</td>
-                        <td class="p-6 text-right text-white font-bold">$349</td>
-                    </tr>
-                    <tr class="hover:bg-white/5 transition-colors group">
-                        <td class="sticky left-0 z-10 bg-[#0a0a0a]/95 backdrop-blur-md p-3 font-medium text-white border-r border-white/5">
-                            <span class="text-gray-600 mr-4 group-hover:text-yellow-400">03</span>Phnom Penh — Battambang</td>
-                        <td class="p-6 text-center text-gray-400">$89</td>
-                        <td class="p-6 text-center text-gray-400">$119</td>
-                        <td class="p-6 text-center text-gray-400">$119</td>
-                        <td class="p-6 text-center text-gray-400">$149</td>
-                        <td class="p-6 text-right text-white font-bold">$349</td>
-                    </tr>
-                    <tr class="hover:bg-white/5 transition-colors group">
-                        <td class="sticky left-0 z-10 bg-[#0a0a0a]/95 backdrop-blur-md p-3 font-medium text-white border-r border-white/5">
-                            <span class="text-gray-600 mr-4 group-hover:text-yellow-400">04</span>Phnom Penh — Kompot / Kep</td>
-                        <td class="p-6 text-center text-gray-400">$59</td>
-                        <td class="p-6 text-center text-gray-400">$89</td>
-                        <td class="p-6 text-center text-gray-400">$89</td>
-                        <td class="p-6 text-center text-gray-400">$109</td>
-                        <td class="p-6 text-right text-white font-bold">$189</td>
-                    </tr>
-                    <tr class="hover:bg-white/5 transition-colors group">
-                        <td class="sticky left-0 z-10 bg-[#0a0a0a]/95 backdrop-blur-md p-3 font-medium text-white border-r border-white/5">
-                            <span class="text-gray-600 mr-4 group-hover:text-yellow-400">05</span>Phnom Penh — Poipet</td>
-                        <td class="p-6 text-center text-gray-400">$109</td>
-                        <td class="p-6 text-center text-gray-400">$149</td>
-                        <td class="p-6 text-center text-gray-400">$149</td>
-                        <td class="p-6 text-center text-gray-400">$199</td>
-                        <td class="p-6 text-right text-white font-bold">$419</td>
-                    </tr>
-                    <tr class="hover:bg-white/5 transition-colors group">
-                        <td class="sticky left-0 z-10 bg-[#0a0a0a]/95 backdrop-blur-md p-3 font-medium text-white border-r border-white/5">
-                            <span class="text-gray-600 mr-4 group-hover:text-yellow-400">06</span>Phnom Penh — Bavet</td>
-                        <td class="p-6 text-center text-gray-400">$59</td>
-                        <td class="p-6 text-center text-gray-400">$89</td>
-                        <td class="p-6 text-center text-gray-400">$89</td>
-                        <td class="p-6 text-center text-gray-400">$109</td>
-                        <td class="p-6 text-right text-white font-bold">$179</td>
-                    </tr>
-                    <tr class="hover:bg-white/5 transition-colors group">
-                        <td class="sticky left-0 z-10 bg-[#0a0a0a]/95 backdrop-blur-md p-3 font-medium text-white border-r border-white/5">
-                            <span class="text-gray-600 mr-4 group-hover:text-yellow-400">07</span>Phnom Penh — ChreyThom</td>
-                        <td class="p-6 text-center text-gray-400">$49</td>
-                        <td class="p-6 text-center text-gray-400">$79</td>
-                        <td class="p-6 text-center text-gray-400">$79</td>
-                        <td class="p-6 text-center text-gray-400">$89</td>
-                        <td class="p-6 text-right text-white font-bold">$179</td>
-                    </tr>
-                    <tr class="hover:bg-white/5 transition-colors group">
-                        <td class="sticky left-0 z-10 bg-[#0a0a0a]/95 backdrop-blur-md p-3 font-medium text-white border-r border-white/5">
-                            <span class="text-gray-600 mr-4 group-hover:text-yellow-400">08</span>Poipet — Siem Reap Airport</td>
-                        <td class="p-6 text-center text-gray-400">$69</td>
-                        <td class="p-6 text-center text-gray-400">$89</td>
-                        <td class="p-6 text-center text-gray-400">$89</td>
-                        <td class="p-6 text-center text-gray-400">$199</td>
-                        <td class="p-6 text-right text-white font-bold">$249</td>
-                    </tr>
-                    <tr class="hover:bg-white/5 transition-colors group">
-                        <td class="sticky left-0 z-10 bg-[#0a0a0a]/95 backdrop-blur-md p-3 font-medium text-white border-r border-white/5">
-                            <span class="text-gray-600 mr-4 group-hover:text-yellow-400">09</span>Sihanoukville — Poipet</td>
-                        <td class="p-6 text-center text-gray-400">$169</td>
-                        <td class="p-6 text-center text-gray-400">$249</td>
-                        <td class="p-6 text-center text-gray-400">$249</td>
-                        <td class="p-6 text-center text-gray-400">$279</td>
-                        <td class="p-6 text-right text-white font-bold">$599</td>
-                    </tr>
-                    <tr class="hover:bg-white/5 transition-colors group">
-                        <td class="sticky left-0 z-10 bg-[#0a0a0a]/95 backdrop-blur-md p-3 font-medium text-white border-r border-white/5">
-                            <span class="text-gray-600 mr-4 group-hover:text-yellow-400">10</span>Sihanoukville — Bavet</td>
-                        <td class="p-6 text-center text-gray-400">$129</td>
-                        <td class="p-6 text-center text-gray-400">$189</td>
-                        <td class="p-6 text-center text-gray-400">$189</td>
-                        <td class="p-6 text-center text-gray-400">$209</td>
-                        <td class="p-6 text-right text-white font-bold">$309</td>
-                    </tr>
-                    <tr class="hover:bg-white/5 transition-colors group">
-                        <td class="sticky left-0 z-10 bg-[#0a0a0a]/95 backdrop-blur-md p-3 font-medium text-white border-r border-white/5">
-                            <span class="text-gray-600 mr-4 group-hover:text-yellow-400">11</span>Siem Reap — Sihanoukville</td>
-                        <td class="p-6 text-center text-gray-400">$149</td>
-                        <td class="p-6 text-center text-gray-400">$209</td>
-                        <td class="p-6 text-center text-gray-400">$209</td>
-                        <td class="p-6 text-center text-gray-400">$229</td>
-                        <td class="p-6 text-right text-white font-bold">$549</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+      <div class="overflow-x-auto border border-white/10 rounded-2xl bg-white/5 backdrop-blur-md custom-scrollbar">
+        <table class="w-full text-left border-collapse min-w-[900px]">
+          <thead>
+            <tr class="border-b border-white/10 bg-white/10">
+              <th class="sticky left-0 z-20 bg-[#050505] p-6 text-[10px] uppercase tracking-widest text-gray-400 font-bold border-r border-white/5">Index / Journey</th>
+              <th class="p-6 text-[10px] uppercase tracking-widest text-yellow-400 font-bold text-center">SUV</th>
+              <th class="p-6 text-[10px] uppercase tracking-widest text-yellow-400 font-bold text-center">Starex</th>
+              <th class="p-6 text-[10px] uppercase tracking-widest text-yellow-400 font-bold text-center">Alphard</th>
+              <th class="p-6 text-[10px] uppercase tracking-widest text-yellow-400 font-bold text-center">Alphard 2012</th>
+              <th class="p-6 text-[10px] uppercase tracking-widest text-yellow-400 font-bold text-right">VIP / Alphard 2020</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-white/5 font-light">
+            <tr class="hover:bg-white/5 transition-colors group">
+              <td class="sticky left-0 z-10 bg-[#0a0a0a]/95 backdrop-blur-md p-6 font-medium text-white border-r border-white/5"><span class="text-gray-600 mr-4 group-hover:text-yellow-400">01</span>Phnom Penh — Sihanoukville</td>
+              <td class="p-6 text-center text-gray-400">$79</td><td class="p-6 text-center text-gray-400">$109</td><td class="p-6 text-center text-gray-400">$99</td><td class="p-6 text-center text-gray-400">$109</td><td class="p-6 text-right text-white font-bold">$219</td>
+            </tr>
+            <tr class="hover:bg-white/5 transition-colors group">
+              <td class="sticky left-0 z-10 bg-[#0a0a0a]/95 backdrop-blur-md p-6 font-medium text-white border-r border-white/5"><span class="text-gray-600 mr-4 group-hover:text-yellow-400">02</span>Phnom Penh — Siem Reap</td>
+              <td class="p-6 text-center text-gray-400">$79</td><td class="p-6 text-center text-gray-400">$109</td><td class="p-6 text-center text-gray-400">$109</td><td class="p-6 text-center text-gray-400">$139</td><td class="p-6 text-right text-white font-bold">$349</td>
+            </tr>
+            <tr class="hover:bg-white/5 transition-colors group">
+              <td class="sticky left-0 z-10 bg-[#0a0a0a]/95 backdrop-blur-md p-6 font-medium text-white border-r border-white/5"><span class="text-gray-600 mr-4 group-hover:text-yellow-400">03</span>Phnom Penh — Battambang</td>
+              <td class="p-6 text-center text-gray-400">$89</td><td class="p-6 text-center text-gray-400">$119</td><td class="p-6 text-center text-gray-400">$119</td><td class="p-6 text-center text-gray-400">$149</td><td class="p-6 text-right text-white font-bold">$349</td>
+            </tr>
+            <tr class="hover:bg-white/5 transition-colors group">
+              <td class="sticky left-0 z-10 bg-[#0a0a0a]/95 backdrop-blur-md p-6 font-medium text-white border-r border-white/5"><span class="text-gray-600 mr-4 group-hover:text-yellow-400">04</span>Phnom Penh — Kompot / Kep</td>
+              <td class="p-6 text-center text-gray-400">$59</td><td class="p-6 text-center text-gray-400">$89</td><td class="p-6 text-center text-gray-400">$89</td><td class="p-6 text-center text-gray-400">$109</td><td class="p-6 text-right text-white font-bold">$189</td>
+            </tr>
+            <tr class="hover:bg-white/5 transition-colors group">
+              <td class="sticky left-0 z-10 bg-[#0a0a0a]/95 backdrop-blur-md p-6 font-medium text-white border-r border-white/5"><span class="text-gray-600 mr-4 group-hover:text-yellow-400">05</span>Phnom Penh — Poipet</td>
+              <td class="p-6 text-center text-gray-400">$109</td><td class="p-6 text-center text-gray-400">$149</td><td class="p-6 text-center text-gray-400">$149</td><td class="p-6 text-center text-gray-400">$199</td><td class="p-6 text-right text-white font-bold">$419</td>
+            </tr>
+            <tr class="hover:bg-white/5 transition-colors group">
+              <td class="sticky left-0 z-10 bg-[#0a0a0a]/95 backdrop-blur-md p-6 font-medium text-white border-r border-white/5"><span class="text-gray-600 mr-4 group-hover:text-yellow-400">06</span>Phnom Penh — Bavet</td>
+              <td class="p-6 text-center text-gray-400">$59</td><td class="p-6 text-center text-gray-400">$89</td><td class="p-6 text-center text-gray-400">$89</td><td class="p-6 text-center text-gray-400">$109</td><td class="p-6 text-right text-white font-bold">$179</td>
+            </tr>
+            <tr class="hover:bg-white/5 transition-colors group">
+              <td class="sticky left-0 z-10 bg-[#0a0a0a]/95 backdrop-blur-md p-6 font-medium text-white border-r border-white/5"><span class="text-gray-600 mr-4 group-hover:text-yellow-400">07</span>Phnom Penh — ChreyThom</td>
+              <td class="p-6 text-center text-gray-400">$49</td><td class="p-6 text-center text-gray-400">$79</td><td class="p-6 text-center text-gray-400">$79</td><td class="p-6 text-center text-gray-400">$89</td><td class="p-6 text-right text-white font-bold">$179</td>
+            </tr>
+            <tr class="hover:bg-white/5 transition-colors group">
+              <td class="sticky left-0 z-10 bg-[#0a0a0a]/95 backdrop-blur-md p-6 font-medium text-white border-r border-white/5"><span class="text-gray-600 mr-4 group-hover:text-yellow-400">08</span>Poipet — Siem Reap Airport</td>
+              <td class="p-6 text-center text-gray-400">$69</td><td class="p-6 text-center text-gray-400">$89</td><td class="p-6 text-center text-gray-400">$89</td><td class="p-6 text-center text-gray-400">$199</td><td class="p-6 text-right text-white font-bold">$249</td>
+            </tr>
+            <tr class="hover:bg-white/5 transition-colors group">
+              <td class="sticky left-0 z-10 bg-[#0a0a0a]/95 backdrop-blur-md p-6 font-medium text-white border-r border-white/5"><span class="text-gray-600 mr-4 group-hover:text-yellow-400">09</span>Sihanoukville — Poipet</td>
+              <td class="p-6 text-center text-gray-400">$169</td><td class="p-6 text-center text-gray-400">$249</td><td class="p-6 text-center text-gray-400">$249</td><td class="p-6 text-center text-gray-400">$279</td><td class="p-6 text-right text-white font-bold">$599</td>
+            </tr>
+            <tr class="hover:bg-white/5 transition-colors group">
+              <td class="sticky left-0 z-10 bg-[#0a0a0a]/95 backdrop-blur-md p-6 font-medium text-white border-r border-white/5"><span class="text-gray-600 mr-4 group-hover:text-yellow-400">10</span>Sihanoukville — Bavet</td>
+              <td class="p-6 text-center text-gray-400">$129</td><td class="p-6 text-center text-gray-400">$189</td><td class="p-6 text-center text-gray-400">$189</td><td class="p-6 text-center text-gray-400">$209</td><td class="p-6 text-right text-white font-bold">$309</td>
+            </tr>
+            <tr class="hover:bg-white/5 transition-colors group">
+              <td class="sticky left-0 z-10 bg-[#0a0a0a]/95 backdrop-blur-md p-6 font-medium text-white border-r border-white/5"><span class="text-gray-600 mr-4 group-hover:text-yellow-400">11</span>Siem Reap — Sihanoukville</td>
+              <td class="p-6 text-center text-gray-400">$149</td><td class="p-6 text-center text-gray-400">$209</td><td class="p-6 text-center text-gray-400">$209</td><td class="p-6 text-center text-gray-400">$229</td><td class="p-6 text-right text-white font-bold">$549</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
-        <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 text-[10px] uppercase tracking-[0.2em] text-gray-500">
-            <div class="flex items-center gap-3"><span class="w-1 h-1 bg-yellow-400 rounded-full"></span> All-inclusive pricing</div>
-            <div class="flex items-center gap-3"><span class="w-1 h-1 bg-yellow-400 rounded-full"></span> 24/7 Dispatch Available</div>
-            <div class="flex items-center gap-3"><span class="w-1 h-1 bg-yellow-400 rounded-full"></span> Door-to-door service</div>
-        </div>
+      <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 text-[10px] uppercase tracking-[0.2em] text-gray-500">
+        <div class="flex items-center gap-3"><span class="w-1 h-1 bg-yellow-400 rounded-full"></span> All-inclusive pricing</div>
+        <div class="flex items-center gap-3"><span class="w-1 h-1 bg-yellow-400 rounded-full"></span> 24/7 Dispatch Available</div>
+        <div class="flex items-center gap-3"><span class="w-1 h-1 bg-yellow-400 rounded-full"></span> Door-to-door service</div>
+      </div>
     </div>
-</section>
+  </section>
 
-<style>
-    /* Custom Scrollbar Styling */
-    .custom-scrollbar::-webkit-scrollbar { height: 6px; }
-    .custom-scrollbar::-webkit-scrollbar-track { background: #111; }
-    .custom-scrollbar::-webkit-scrollbar-thumb { background: #facc15; border-radius: 10px; }
-</style>
+  <style>
+    .custom-scrollbar::-webkit-scrollbar       { height: 6px; }
+    .custom-scrollbar::-webkit-scrollbar-track  { background: #111; }
+    .custom-scrollbar::-webkit-scrollbar-thumb  { background: #facc15; border-radius: 10px; }
+  </style>
 
- 
+  <!-- ══════════════════════════════════════════════════ SIEM REAP TOUR PACKAGES -->
+  <section id="siem-reap-tours" class="py-32 px-6 bg-black relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(250,204,21,0.05) 0%, transparent 70%);"></div>
 
-    <footer id="contact" class="py-20 px-6 border-t border-white/10 text-center">
-        <div class="mb-10 text-yellow-400 text-3xl">LocalT.taxi</div>
-        <div class="flex flex-col md:flex-row justify-center gap-5  text-gray-500">
-            <span>info@localTtaxi.com</span>
-            <span>+855 12 324 345 | +855 70 668 685 </span>
-            <span>Phnom Penh / Siem Reap</span>
+    <div class="max-w-6xl mx-auto relative z-10">
+      <div class="mb-16">
+        <span class="text-yellow-400 font-bold uppercase tracking-[0.3em] text-xs">Siem Reap</span>
+        <h2 class="text-4xl md:text-5xl font-doc-title text-white mt-2 italic">Tour Packages</h2>
+        <p class="text-gray-500 mt-4 max-w-xl font-light">Curated Angkor temple experiences — from the sacred to the spectacular.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+
+        <!-- Card 1 -->
+        <div class="tour-card group relative overflow-hidden rounded-2xl cursor-pointer border border-white/5 bg-gradient-to-br from-stone-900 to-black" data-tour="vong-toch" style="min-height:280px;">
+          <div class="absolute inset-0"><img src="./tour_packages/vong_toch.jpg" alt="Vong Toch Tour" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"/></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+          <div class="relative z-10 flex flex-col justify-end h-full p-7" style="min-height:280px;">
+            <h3 class="font-doc-title italic text-white text-3xl leading-tight">Vong Toch Tour</h3>
+            <p class="text-gray-400 text-xs mt-1 mb-4">(Small Circuit)</p>
+            <button class="tour-book-btn self-start px-5 py-2 rounded-md text-xs font-bold uppercase tracking-widest text-black bg-amber-600 hover:bg-yellow-400 transition-colors duration-200">Book Now →</button>
+          </div>
+          <div class="absolute inset-0 rounded-2xl border border-yellow-400/0 group-hover:border-yellow-400/40 transition-all duration-300 pointer-events-none"></div>
         </div>
-        <div class="flex flex-wrap justify-center gap-6 mt-12">
-            <a href="https://www.facebook.com/share/17uaAhuHrb/?mibextid=wwXIfr" target="_blank" 
-            class="group flex items-center gap-3 px-6 py-3 border border-yellow/10 rounded-full hover:bg-[#1877F2] hover:border-[#1877F2] transition-all duration-300">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
-                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                </svg>
-                <span class="text-[10px] uppercase tracking-[0.2em] font-bold">Facebook</span>
-            </a>
 
-            <a href="https://t.me/HENG_ATH_PRIVATE_TAXI" target="_blank" 
-            class="group flex items-center gap-3 px-6 py-3 border border-yellow/10 rounded-full hover:bg-[#0088cc] hover:border-[#0088cc] transition-all duration-300">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
-                    <path d="m22 2-7 20-4-9-9-4Z"></path>
-                    <path d="M22 2 11 13"></path>
-                </svg>
-                <span class="text-[10px] uppercase tracking-[0.2em] font-bold">Telegram</span>
-            </a>
-
-            <a href="https://wa.me/85589526951" 
-            target="_blank" 
-            class="group flex items-center gap-3 px-6 py-3 border border-yellow/10 rounded-full hover:bg-[#25D366] hover:border-[#25D366] transition-all duration-300">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
-                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 1 1-7.6-14.08 8.38 8.38 0 0 1 3.8.9m.5 1.4.5-1.5 1.5.5-1.5.5Z"></path>
-                    <path d="M17.1 12.1a2.1 2.1 0 0 1 0 2.6l-2 2a2.1 2.1 0 0 1-2.6 0l-4.1-4.1a2.1 2.1 0 0 1 0-2.6l2-2a2.1 2.1 0 0 1 2.6 0Z"></path>
-                </svg>
-                <span class="text-[10px] uppercase tracking-[0.2em] font-bold">WhatsApp</span>
-            </a>
+        <!-- Card 2 -->
+        <div class="tour-card group relative overflow-hidden rounded-2xl cursor-pointer border border-white/5 bg-gradient-to-br from-stone-900 to-black" data-tour="vong-thom" style="min-height:280px;">
+          <div class="absolute inset-0"><img src="./tour_packages/vong_thom.jpg" alt="Vong Thom Tour" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"/></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+          <div class="relative z-10 flex flex-col justify-end h-full p-7" style="min-height:280px;">
+            <h3 class="font-doc-title italic text-white text-3xl leading-tight">Vong Thom Tour</h3>
+            <p class="text-gray-400 text-xs mt-1 mb-4">(Grand Circuit)</p>
+            <button class="tour-book-btn self-start px-5 py-2 rounded-md text-xs font-bold uppercase tracking-widest text-black bg-amber-600 hover:bg-yellow-400 transition-colors duration-200">Book Now →</button>
+          </div>
+          <div class="absolute inset-0 rounded-2xl border border-yellow-400/0 group-hover:border-yellow-400/40 transition-all duration-300 pointer-events-none"></div>
         </div>
-            
-        <p class="mt-10 text-gray-700">&copy; <span id="year"></span>  Archive Series</p>
-        <script>
-            document.getElementById("year").textContent = new Date().getFullYear();
-        </script>
 
-       
-    </footer>
+        <!-- Card 3 -->
+        <div class="tour-card group relative overflow-hidden rounded-2xl cursor-pointer border border-white/5 bg-gradient-to-br from-orange-950 to-black" data-tour="sunrise" style="min-height:280px;">
+          <div class="absolute inset-0"><img src="./tour_packages/sunrise.jpg" alt="Sunrise Tour" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"/></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+          <div class="relative z-10 flex flex-col justify-end h-full p-7" style="min-height:280px;">
+            <h3 class="font-doc-title italic text-white text-3xl leading-tight">Sunrise Tour</h3>
+            <p class="text-white text-xs mt-1 mb-4">4:30 AM departure</p>
+            <button class="tour-book-btn self-start px-5 py-2 rounded-md text-xs font-bold uppercase tracking-widest text-black bg-orange-500 hover:bg-yellow-400 transition-colors duration-200">Book Now →</button>
+          </div>
+          <div class="absolute inset-0 rounded-2xl border border-yellow-400/0 group-hover:border-yellow-400/40 transition-all duration-300 pointer-events-none"></div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="tour-card group relative overflow-hidden rounded-2xl cursor-pointer border border-white/5 bg-gradient-to-br from-red-950 to-black" data-tour="sunset" style="min-height:280px;">
+          <div class="absolute inset-0"><img src="./tour_packages/sunset.jpg" alt="Sunset Tour" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"/></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+          <div class="relative z-10 flex flex-col justify-end h-full p-7" style="min-height:280px;">
+            <h3 class="font-doc-title italic text-white text-3xl leading-tight">Sunset Tour</h3>
+            <p class="text-white text-xs mt-1 mb-4">4:00 PM departure</p>
+            <button class="tour-book-btn self-start px-5 py-2 rounded-md text-xs font-bold uppercase tracking-widest text-black bg-red-600 hover:bg-yellow-400 transition-colors duration-200">Book Now →</button>
+          </div>
+          <div class="absolute inset-0 rounded-2xl border border-yellow-400/0 group-hover:border-yellow-400/40 transition-all duration-300 pointer-events-none"></div>
+        </div>
+
+      </div>
+
+      <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-8 text-[10px] uppercase tracking-[0.2em] text-gray-500">
+        <div class="flex items-center gap-3"><span class="w-1 h-1 bg-yellow-400 rounded-full"></span> Private air-conditioned vehicle</div>
+        <div class="flex items-center gap-3"><span class="w-1 h-1 bg-yellow-400 rounded-full"></span> English-speaking driver guide</div>
+        <div class="flex items-center gap-3"><span class="w-1 h-1 bg-yellow-400 rounded-full"></span> Hotel pick-up & drop-off included</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════ TOUR MODAL -->
+  <div id="tour-modal" class="fixed inset-0 z-[999] flex items-center justify-center p-4 hidden" aria-modal="true" role="dialog">
+    <div id="modal-backdrop" class="absolute inset-0 bg-black/80 backdrop-blur-md"></div>
+    <div id="modal-panel" class="relative z-10 w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl border border-white/10 bg-[#0d0d0d] shadow-2xl transform transition-all duration-300 scale-95 opacity-0">
+
+      <!-- Hero image -->
+      <div class="relative h-56 overflow-hidden rounded-t-2xl">
+        <img id="modal-img" src="" alt="" class="w-full h-full object-cover"/>
+        <div class="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-transparent to-transparent"></div>
+        <button id="modal-close" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/60 border border-white/10 text-white flex items-center justify-center hover:bg-white hover:text-black transition-all text-xl font-bold leading-none">✕</button>
+        <span id="modal-badge" class="absolute top-4 left-4 text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full"></span>
+      </div>
+
+      <!-- Body -->
+      <div class="p-8">
+        <p id="modal-subtitle" class="text-xs uppercase tracking-[0.3em] font-bold mb-2"></p>
+        <h2 id="modal-title" class="font-doc-title italic text-4xl text-white mb-1"></h2>
+        <p id="modal-tagline" class="text-gray-500 text-sm mb-6"></p>
+        <p id="modal-desc" class="text-gray-300 leading-relaxed mb-8 text-sm"></p>
+
+        <!-- ── TEMPLE GRID ── -->
+        <div class="mb-8">
+          <h4 class="text-yellow-400 font-bold uppercase tracking-widest text-xs mb-4">Temples on This Tour</h4>
+          <div id="modal-temple-grid" class="grid grid-cols-2 sm:grid-cols-3 gap-3"></div>
+        </div>
+
+        <!-- Info grid -->
+        <div class="grid grid-cols-2 gap-4 mb-8">
+          <div class="rounded-xl bg-white/5 border border-white/5 p-4">
+            <p class="text-[10px] uppercase tracking-widest text-gray-500 mb-1">Duration</p>
+            <p id="modal-duration" class="text-white font-bold text-sm"></p>
+          </div>
+          <div class="rounded-xl bg-white/5 border border-white/5 p-4">
+            <p class="text-[10px] uppercase tracking-widest text-gray-500 mb-1">Departure</p>
+            <p id="modal-departure" class="text-white font-bold text-sm"></p>
+          </div>
+          <div class="rounded-xl bg-white/5 border border-white/5 p-4">
+            <p class="text-[10px] uppercase tracking-widest text-gray-500 mb-1">Price from</p>
+            <p id="modal-price" class="text-yellow-400 font-bold text-sm"></p>
+          </div>
+          <div class="rounded-xl bg-white/5 border border-white/5 p-4">
+            <p class="text-[10px] uppercase tracking-widest text-gray-500 mb-1">Included</p>
+            <p id="modal-included" class="text-white font-bold text-sm"></p>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <a id="modal-cta" href="https://wa.me/85589526951" target="_blank"
+           class="flex items-center justify-center gap-3 w-full py-4 rounded-xl font-bold uppercase tracking-[0.2em] text-sm text-black bg-yellow-400 hover:bg-white transition-colors duration-200">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+          </svg>
+          Book via WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ STYLES + SCRIPTS -->
+  <style>
+    /* Tour cards */
+    .tour-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .tour-card:hover { transform: translateY(-4px); box-shadow: 0 24px 60px rgba(250,204,21,0.08); }
+
+    /* Modal */
+    #modal-panel.modal-visible { transform: scale(1); opacity: 1; }
+    body.modal-open { overflow: hidden; }
+
+    /* Temple cards inside modal */
+    .temple-card {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06);
+      aspect-ratio: 4/3;
+      cursor: default;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+    .temple-card:hover { transform: translateY(-3px); border-color: rgba(250,204,21,0.4); }
+    .temple-card img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.6s ease;
+    }
+    .temple-card:hover img { transform: scale(1.08); }
+    .temple-card .tc-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.1) 55%, transparent 100%);
+    }
+    .temple-card .tc-label { position: absolute; bottom: 0; left: 0; right: 0; padding: 10px 10px 9px; }
+    .temple-card .tc-name  { font-size: 12px; font-weight: 700; color: #fff; line-height: 1.3; display: block; }
+    .temple-card .tc-note  { font-size: 10px; color: rgba(255,255,255,0.5); display: block; margin-top: 2px; line-height: 1.3; }
+  </style>
+
+  <script>
+    /* ── Temple definitions ─────────────────────────────────────────────────
+       To use your own photos, put them in ./temples/ and update each src.
+       The Unsplash URLs below are fallbacks.
+    ───────────────────────────────────────────────────────────────────────── */
+    const TEMPLES = {
+      angkorWat:    { name: 'Angkor Wat',               note: "World's largest religious monument", src: './temples/angkorwat.jpg' },
+      bayon:        { name: 'Bayon Temple',              note: '216 smiling stone faces',             src: './temples/bayon.jpg' },
+      taProhm:      { name: 'Ta Prohm',                 note: 'Jungle-wrapped Tomb Raider ruins',    src: './temples/taprom.jpg' },
+      baphuon:      { name: 'Baphuon & Phimeanakas',    note: 'Royal Enclosure temples',             src: './temples/baphuon.jpg' },
+      terrace:      { name: 'Terrace of the Elephants', note: 'Royal parade ground',                 src: './temples/elephantterrace.jpg' },
+      preahKhan:    { name: 'Preah Khan',               note: 'Vast colonnaded corridors',           src: './temples/preahkhan.jpg' },
+      neakPean:     { name: 'Neak Pean',                note: 'Mystical island temple',              src: './temples/neakpean.jpg' },
+      preRup:       { name: 'Pre Rup',                  note: 'Panoramic sunset views',              src: './temples/prerub.jpg' },
+      taSom:        { name: 'Ta Som',                   note: 'Stone jewel wrapped in fig trees',    src: './temples/tasom.jpg' },
+      eastMebon:    { name: 'East Mebon',               note: 'Temple on an ancient reservoir',      src: './temples/eastmebon.jpg' },
+      phnomBakheng: { name: 'Phnom Bakheng',            note: 'Hilltop panorama over Angkor',        src: './temples/phnombakaeng.jpg' },
+      srahsrang:    { name: 'Srahsrang',                note: 'Ancient temple with unique architecture', src: './temples/srahsrang.jpg' },
+    };
+
+    const tourData = {
+      'vong-toch': {
+        title: 'Vong Toch Tour', subtitle: 'Small Circuit',
+        tagline: '(Small Circuit) — Half or Full Day',
+        badge: '🏛 Small Circuit', badgeColor: 'bg-amber-600 text-black', accentColor: '#d97706',
+        img: './tour_packages/vong_toch.jpg',
+        desc: 'The essential Angkor experience. The Small Circuit covers the most iconic temples in the Angkor Archaeological Park — a perfect first-timer route that reveals the full grandeur of the Khmer Empire. Your private driver will guide you door-to-door from your hotel.',
+        temples: [ TEMPLES.angkorWat, TEMPLES.bayon, TEMPLES.taProhm, TEMPLES.baphuon, TEMPLES.terrace ],
+        duration: '6 – 8 hours', departure: '8:00 AM', price: '$35 / vehicle', included: 'Driver + AC car',
+      },
+      'vong-thom': {
+        title: 'Vong Thom Tour', subtitle: 'Grand Circuit',
+        tagline: '(Grand Circuit) — Full Day',
+        badge: '🏯 Grand Circuit', badgeColor: 'bg-stone-600 text-white', accentColor: '#a8a29e',
+        img: './tour_packages/vong_thom.jpg',
+        desc: 'Venture beyond the famous temples to discover the outer ring of Angkor — quieter, more mystical, and equally breathtaking. The Grand Circuit is ideal for history enthusiasts who want to see the full scope of the ancient Khmer capital.',
+        temples: [ TEMPLES.preahKhan, TEMPLES.neakPean, TEMPLES.preRup, TEMPLES.taSom, TEMPLES.eastMebon ],
+        duration: '8 – 10 hours', departure: '7:30 AM', price: '$40 / vehicle', included: 'Driver + AC car',
+      },
+      'sunrise': {
+        title: 'Sunrise Tour', subtitle: 'Dawn at Angkor Wat',
+        tagline: 'Witness the magic of Angkor Wat at dawn',
+        badge: '🌅 Sunrise', badgeColor: 'bg-orange-500 text-black', accentColor: '#f97316',
+        img: './tour_packages/sunrise.jpg',
+        desc: 'One of the most transcendent experiences in Southeast Asia. As first light breaks over the reflection pools of Angkor Wat, the five towers slowly emerge from the mist — a moment that will stay with you forever. Your driver picks you up before dawn, securing front-row access before the crowds arrive.',
+        temples: [TEMPLES.angkorWat, TEMPLES.phnomBakheng, TEMPLES.srahsrang],
+        duration: '3 – 5 hours (extendable)', departure: '4:30 AM', price: '$30 / vehicle', included: 'Driver + AC car',
+      },
+      'sunset': {
+        title: 'Sunset Tour', subtitle: 'Golden Hour at Angkor',
+        tagline: 'Experience the beauty of Angkor at dusk',
+        badge: '🌇 Sunset', badgeColor: 'bg-red-700 text-white', accentColor: '#dc2626',
+        img: './tour_packages/sunset.jpg',
+        desc: "End your day in breathtaking fashion. As the sun dips low, Angkor's sandstone temples glow a deep amber-gold — a completely different spectacle from the morning visit. Combine a late-afternoon temple run with the iconic sunset over Pre Rup or Phnom Bakheng hill.",
+        temples: [ TEMPLES.phnomBakheng, TEMPLES.preRup, TEMPLES.angkorWat ],
+        duration: '3 – 4 hours', departure: '4:00 PM', price: '$30 / vehicle', included: 'Driver + AC car',
+      },
+    };
+
+    const modal    = document.getElementById('tour-modal');
+    const panel    = document.getElementById('modal-panel');
+    const backdrop = document.getElementById('modal-backdrop');
+    const closeBtn = document.getElementById('modal-close');
+
+    function buildTempleGrid(temples) {
+      document.getElementById('modal-temple-grid').innerHTML = temples.map(t => `
+        <div class="temple-card">
+          <img src="${t.src}" alt="${t.name}" loading="lazy" />
+          <div class="tc-overlay"></div>
+          <div class="tc-label">
+            <span class="tc-name">${t.name}</span>
+            <span class="tc-note">${t.note}</span>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function openModal(tourKey) {
+      const d = tourData[tourKey];
+      if (!d) return;
+
+      document.getElementById('modal-img').src          = d.img;
+      document.getElementById('modal-img').alt          = d.title;
+      document.getElementById('modal-subtitle').textContent  = d.subtitle;
+      document.getElementById('modal-subtitle').style.color  = d.accentColor;
+      document.getElementById('modal-title').textContent     = d.title;
+      document.getElementById('modal-tagline').textContent   = d.tagline;
+      document.getElementById('modal-desc').textContent      = d.desc;
+      document.getElementById('modal-duration').textContent  = d.duration;
+      document.getElementById('modal-departure').textContent = d.departure;
+      document.getElementById('modal-price').textContent     = d.price;
+      document.getElementById('modal-included').textContent  = d.included;
+
+      const badge = document.getElementById('modal-badge');
+      badge.textContent = d.badge;
+      badge.className   = `absolute top-4 left-4 text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full ${d.badgeColor}`;
+
+      buildTempleGrid(d.temples);
+
+      modal.classList.remove('hidden');
+      document.body.classList.add('modal-open');
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => { panel.classList.add('modal-visible'); });
+      });
+    }
+
+    function closeModal() {
+      panel.classList.remove('modal-visible');
+      document.body.classList.remove('modal-open');
+      setTimeout(() => { modal.classList.add('hidden'); }, 300);
+    }
+
+    document.querySelectorAll('.tour-card').forEach(card => {
+      card.addEventListener('click', () => openModal(card.dataset.tour));
+    });
+
+    closeBtn.addEventListener('click', closeModal);
+    backdrop.addEventListener('click', closeModal);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+  </script>
+
+  <!-- ════════════════════════════════════════════════════════════════ FOOTER -->
+  <footer id="contact" class="py-20 px-6 border-t border-white/10 text-center">
+    <div class="mb-10 text-yellow-400 text-3xl">LocalT.taxi</div>
+    <div class="flex flex-col md:flex-row justify-center gap-5 text-gray-500">
+      <span>info@localTtaxi.com</span>
+      <span>+855 12 324 345 | +855 70 668 685</span>
+      <span>Phnom Penh / Siem Reap</span>
+    </div>
+    <div class="flex flex-wrap justify-center gap-6 mt-12">
+      <a href="https://www.facebook.com/share/17uaAhuHrb/?mibextid=wwXIfr" target="_blank"
+         class="group flex items-center gap-3 px-6 py-3 border border-white/10 rounded-full hover:bg-[#1877F2] hover:border-[#1877F2] transition-all duration-300">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+          <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+        </svg>
+        <span class="text-[10px] uppercase tracking-[0.2em] font-bold">Facebook</span>
+      </a>
+      <a href="https://t.me/HENG_ATH_PRIVATE_TAXI" target="_blank"
+         class="group flex items-center gap-3 px-6 py-3 border border-white/10 rounded-full hover:bg-[#0088cc] hover:border-[#0088cc] transition-all duration-300">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+          <path d="m22 2-7 20-4-9-9-4Z"></path><path d="M22 2 11 13"></path>
+        </svg>
+        <span class="text-[10px] uppercase tracking-[0.2em] font-bold">Telegram</span>
+      </a>
+      <a href="https://wa.me/85589526951" target="_blank"
+         class="group flex items-center gap-3 px-6 py-3 border border-white/10 rounded-full hover:bg-[#25D366] hover:border-[#25D366] transition-all duration-300">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+        </svg>
+        <span class="text-[10px] uppercase tracking-[0.2em] font-bold">WhatsApp</span>
+      </a>
+    </div>
+    <p class="mt-10 text-gray-700">&copy; 2026 Archive Series</p>
+  </footer>
 
 </body>
 </html>
